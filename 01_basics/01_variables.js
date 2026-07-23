@@ -8,3 +8,5 @@ let pin; //if something is not declared but value is not given it is considered 
 console.log(id);
 //changing of const is not allowed
 console.table([id,name,email,city,pin]);
+
+//prefer not to use var as because issue in block scope and functional scope
