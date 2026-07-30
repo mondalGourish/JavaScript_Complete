@@ -35,3 +35,5 @@ for (let i = 0; i <= 20; i++) {
     console.log(i)
     
 }
+
+//for copy paste shortcut --> alt + shift + down_arrowKey
