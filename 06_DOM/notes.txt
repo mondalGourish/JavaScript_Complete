@@ -22,3 +22,14 @@ DOM diagram
                          |       text node   text node
                          |       
 */
+
+/*
+some dom manipulation methods
+title.getElementById
+title.getAttribute("title")
+title.getAttribute("title").setAttribute("class", "test heading")
+
+title.innerText()-> gives only the showed text
+title.textContent() -> gives the hidden text content as well
+title.innerHtml()-> provides the whole html
+*/
