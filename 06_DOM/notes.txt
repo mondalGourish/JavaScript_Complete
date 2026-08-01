@@ -1,0 +1,24 @@
+/*console.log(window) --> in browser it opens a window object
+console.log(document) --> it opens only the document 
+console.dir(document) --> it gives the document as well as the other things we get from window object as well 
+console.log() -->Displays the element as an HTML markup tree.
+console.dir() -->Displays the element as a pure JavaScript object.
+*/
+
+/*
+DOM diagram
+                    window
+                       |
+                    document
+                        |
+                       html
+                |        |                |
+               Head      |              Body
+            |    |       |                |
+        title   meta     |               div -> attribute
+          |       |      |          |        |
+    text node   attribute|attribute<-h1      p
+                         |           |         |
+                         |       text node   text node
+                         |       
+*/
