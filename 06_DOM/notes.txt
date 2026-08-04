@@ -25,11 +25,20 @@ DOM diagram
 
 /*
 some dom manipulation methods
-title.getElementById
-title.getAttribute("title")
-title.getAttribute("title").setAttribute("class", "test heading")
 
-title.innerText()-> gives only the showed text
-title.textContent() -> gives the hidden text content as well
-title.innerHtml()-> provides the whole html
+* title.getElementById
+* title.getAttribute("title")
+* title.getAttribute("title").setAttribute("class", "test heading")
+
+* title.innerText()-> gives only the showed text
+* title.textContent() -> gives the hidden text content as well
+* title.innerHtml()-> provides the whole html
+
+* document.querySelector('') --> selects the first particular mentioned inside() in the mentioned page
+* document.querySelectorALl('') -->selects all the elements mentioned inside() in the page
+returns a nodelist(its different from array)
+* document.getElementByClassName('') --> returns a html collection of the items said
+
+we can convert it in array using Array.from(name of the html collection)
+
 */
