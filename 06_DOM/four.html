@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body style="background-color: black; color: white">
+    <div>
+      <h3>Languages</h3>
+      <ul class="lang">
+        <li>JavaScript</li>
+      </ul>
+    </div>
+  </body>
+  <script>
+    function addLanguage(langName){
+        const li = document.createElement('li')
+        li.innerHTML = `${langName}`
+        document.querySelector(".lang").appendChild(li)
+    }
+    addLanguage("Ruby")
+    addLanguage("python")
+
+    //this method travels the whole list and adds the element at the last we can optimize this approach
+
+    //add language optimized(we dont have to traverse the whole tree)
+    function allLanguageOptimized(langName){
+        const li = document.createElement('li');
+        //it certainly creates a text node without traversing the whole DOM tree
+        li.appendChild(document.createTextNode(langName))
+        document.querySelector(".lang").appendChild(li)
+    }
+    allLanguageOptimized("java")
+
+    //edit
+    const changeLang = document.querySelector("li:nth-child(2)") //select element
+    const newli = document.createElement("li")//create new element
+    newli.textContent = "golang" //assign new value
+    changeLang.replaceWith(newli) //as the element is already selected we dont use querySelector we just replace the value
+
+    //delete
+    const removeLang = document.querySelector("li:last-child")
+    removeLang.remove()
+
+
+    
+  </script>
+</html>
