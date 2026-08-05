@@ -82,3 +82,6 @@ setInterval(function(){
   clock.innerHTML = date.toLocaleTimeString()
 },1000)
 ```
+## solution 4
+```js
+```
