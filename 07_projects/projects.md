@@ -72,3 +72,13 @@ form.addEventListener("submit",function(eve){
   }
 })
 ```
+## solution 3
+```js
+let clock = document.querySelector("#clock")
+
+//we are gating another function set Interval to get given time interval update
+setInterval(function(){
+  let date = new Date();
+  clock.innerHTML = date.toLocaleTimeString()
+},1000)
+```
