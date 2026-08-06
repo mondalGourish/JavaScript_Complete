@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: black; color:cyan">
+    <h1>Js Events Practice</h1>
+    <button id="stop" style="font-size: larger;">Stop</button>
+</body>
+<script>
+    const name = function(){
+        console.log("Learning Js")
+    }
+    // setTimeout(name,2000)
+    //change the h1 to different text
+    let changeName = function(){
+        document.querySelector('h1').innerHTML = "me learning js context"
+    }
+    // setTimeout(changeName,2000)
+
+    //as we have set timeout we also have clearTimeout, it is set basically on events
+    const changeMe = setTimeout(changeName,2000)
+    //on the button we added a event listener to listen to the click event and on click we invoke the clear timeout which in terms stop the segTimeout to execute and the h1 never changes further
+    document.querySelector('#stop').addEventListener("click",function(){
+        clearTimeout(changeMe)
+        console.log("stopped")
+    }) 
+</script>
+</html>

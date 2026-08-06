@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start stop events</title>
+</head>
+<body style="background-color: black; color:cyan; text-align: center;">
+    <h1>Your Random number is 10</h1>
+    <button id="start" style="font-size: larger; height: 50px; width: 200px">Start</button>
+    <button id="stop" style="font-size: larger; height: 50px; width: 200px">Stop</button>
+</body>
+<script>
+    //generate the random number
+    const genNum = function(){
+        document.querySelector("h1").innerHTML = `Your random number is ${(Math.floor(Math.random()*100+1))}`
+    }
+    //assigning after what time the page will change
+    let interval;
+    
+    document.querySelector("#start").addEventListener("click",function(){
+        console.log("Started")
+        interval = setInterval(genNum,2000)
+    })
+
+    //now we have to stop the task after clicking the stop button
+    document.querySelector("#stop").addEventListener("click",function(){
+        console.log("stopped")
+        clearTimeout(interval)
+    })
+    
+</script>
+</html>
