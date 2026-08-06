@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events in Js</title>
+  </head>
+  <body style="background-color: black; color: aliceblue">
+    <h2>Amazing image</h2>
+    <div>
+      <ul id="images">
+        <li>
+          <img
+            width="200px"
+            id="photoshop"
+            src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt="photoshop"
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="japan"
+            src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="river"
+            src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="owl"
+            src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="prayer"
+            src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <a style="color: aliceblue" href="https://google.com" id="google"
+            >Google</a
+          >
+        </li>
+      </ul>
+    </div>
+  </body>
+  <script>
+    //The events in Js run sequentially but there are few exceptions
+    //we can use events like onclick to perform certain functions but gives us less options
+
+    // document.getElementById('owl').onclick = function(){
+    //     alert("owl clicked");
+    // }
+
+    //its better to use eventListener than to use function like onClick and many like that
+    document.getElementById("owl").addEventListener(
+      "click",
+      function (e) {
+        // console.log(e)
+      },
+      false,
+    );
+
+    //things to read in events
+    // type, timestamp, defaultPrevented
+    // target, toElement, srcElement, currentTarget,
+    // clientX, clientY, screenX, screenY
+    // altkey, ctrlkey, shiftkey, keyCode
+
+    //event propagation -> mainly two cases event bubbling and event capturing
+    //event bubbling
+    /*document.getElementById().addEventListener('click',function(e){
+        console.log(e)
+    },false)*/
+    //event capturing
+    /*document.getElementById().addEventListener('click',function(e){
+        console.log(e)
+    },true)*/
+
+    //event bubbling example
+    document.getElementById("images").addEventListener(
+      "click",
+      function (e) {
+        // console.log("ul clicked");
+      },
+      false,
+    );
+    document.getElementById("owl").addEventListener(
+      "click",
+      function (e) {
+        // e.stopPropagation(); //it stops the bubbling and it doesnt go the above event
+        // console.log("owl clicked");
+      },
+      false,
+    );
+    //if we click on images it prints ul clicked but in case of owl it prints owl clicked then ul clicked
+
+    //event capturing example
+    // document.getElementById("images").addEventListener('click',function(e){
+    //     console.log("ul clicked")
+    // },true)
+    // document.getElementById("owl").addEventListener('click',function(e){
+    //     console.log("owl clicked")
+    // },true)
+    //if we click on images it prints ul clicked but in case of owl it prints ul clicked then owl clicked
+
+    document.getElementById("google").addEventListener(
+      "click",
+      function (e) {
+        // console.log("google clicked");
+        e.preventDefault();
+        e.stopPropagation();
+      },
+      false,
+    );
+
+    document.querySelector("#images").addEventListener("click",function(e){
+        console.log(e.target.tagName)
+        if(e.target.tagName === "IMG"){
+            console.log(e.target.id)
+            let removeImg = e.target.parentNode
+            console.log(removeImg)
+            removeImg.remove()
+        }
+    },false)
+  </script>
+</html>
