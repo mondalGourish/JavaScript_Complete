@@ -85,3 +85,61 @@ setInterval(function(){
 ## solution 4
 ```js
 ```
+## solution 5
+```js
+const insert = document.querySelector("#insert")
+window.addEventListener("keydown",(event)=>{
+  console.log(event)
+  insert.innerHTML = `
+  <table>
+  <tr>
+    <th>Key</th>
+    <th>Key Code</th>
+    <th>COde</th>
+  </tr>
+  <tr>
+    <td>${event.key === " " ? "space" : event.key}</td>
+    <td>${event.keyCode}</td>
+    <td>${event.code}</td>
+  </tr>
+</table>
+  `
+})
+```
+## solution 6
+```js
+//generate random color
+function randomColor() {
+  const hex = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += hex[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+let intervalId = null;
+//executing the login in the function
+const startChangingColor = function () {
+  if (!intervalId) {
+    console.log('started');
+    intervalId = setInterval(changeColor, 1000);
+  }
+  //function to change color
+  function changeColor() {
+    document.body.style.backgroundColor = randomColor();
+  }
+};
+const stopChangingColor = function () {
+  console.log('stopped');
+  clearInterval(intervalId);
+  intervalId = null;
+};
+
+//now we have to add functionality to the buttons
+document.querySelector('#start').addEventListener('click', startChangingColor);
+
+document.querySelector('#stop').addEventListener('click', stopChangingColor);
+
+
+//there was a edge case where after starting once we can again start and again an so on, so to solve this problem we used the intervalId = null, once stopped and it will start again only when the intervalId is null
+```

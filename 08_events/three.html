@@ -15,9 +15,10 @@
     const genNum = function(){
         document.querySelector("h1").innerHTML = `Your random number is ${(Math.floor(Math.random()*100+1))}`
     }
-    //assigning after what time the page will change
+    //declaring the variable for the change
     let interval;
-    
+
+    //we have to start the setInterval by clicking the start button
     document.querySelector("#start").addEventListener("click",function(){
         console.log("Started")
         interval = setInterval(genNum,2000)
