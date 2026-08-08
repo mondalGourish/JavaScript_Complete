@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Api request</title>
+  </head>
+  <body style="background-color: #212121; color: black">
+    /* Value State Description 0 UNSENT Client has been created. open() not
+    called yet. 1 OPENED open() has been called. 2 HEADERS_RECEIVED send() has
+    been called, and headers and status are available. 3 LOADING Downloading;
+    responseText holds partial data. 4 DONE The operation is complete. */
+    <div
+      id="container"
+      style="height: 500px; width: 500px; background-color: beige"
+    >
+      <h1 id="heading">Hello</h1>
+      <p id="bio"></p>
+      <p id="followers"></p>
+      <p id="following"></p>
+      <button id="btn" style="height: 50px; width: 100px">Get Info</button>
+    </div>
+  </body>
+  <script>
+    //before api requests there was XML requests which were used to fetch data
+    const requestUrl = "https://api.github.com/users/mondalGourish";
+    //selecting elements to add data to the card
+    let h1 = document.querySelector("#heading");
+    let bio = document.querySelector("#bio");
+    let followers = document.querySelector("#followers");
+    let following = document.querySelector("#following");
+    let button = document.querySelector("#btn");
+
+
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", requestUrl);
+    xhr.onreadystatechange = function () {
+      console.log(xhr.readyState);
+      if (xhr.readyState === 4) {
+        const resp = JSON.parse(this.responseText); //we get the response as a string maximum time so take out value using . operator we have to convert it into object
+        console.log(typeof resp);
+        console.log(resp);
+        console.log(resp.followers);
+        const getInfo = function getInfo() {
+          h1.innerHTML = resp.name;
+          bio.innerHTML = resp.bio;
+          followers.innerHTML = `Followers: ${resp.followers}`;
+          following.innerHTML = `Following: ${resp.following}`;
+          
+        };
+        button.addEventListener("click", function () {
+            setTimeout(getInfo,1000);
+          });
+      }
+    };
+    xhr.send();
+  </script>
+</html>
